@@ -295,6 +295,9 @@ Autocomplete.prototype.respond = function(fn, query, res) {
       format = this.formatter,
       pos = this._position(this.el);
 
+  // Add `autocomplete` class to menu
+  menu.el.addClass('autocomplete');
+
   // Reset the menu
   this.menu.hide().clear().off('select');
 
