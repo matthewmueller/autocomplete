@@ -3,13 +3,11 @@
 
   Autocomplete component
 
-
+![autocomplete](http://cl.ly/image/0Q0A3z3F0v0X)
 
 ## Installation
 
     $ component install matthewmueller/autocomplete
-
-    ![autocomplete](http://cl.ly/image/0Q0A3z3F0v0X)
 
 ## Example
 
