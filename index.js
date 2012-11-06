@@ -280,12 +280,14 @@ Autocomplete.prototype.respond = function(fn, query, res) {
   this.emit('response', items);
   fn(null, items);
 
-  if(!this._display) return this;
-  else if(!this._label || !this._value) {
+  if(!this._display) {
+    return this;
+  } else if(!this._label || !this._value) {
     throw new Error('autocomplete: dont know how to render menu need to specify #label(k) and #value(k)');
   }
 
-  var labels = map(items, this._label),
+  var autocomplete = this,
+      labels = map(items, this._label),
       values = map(items, this._value),
       len = labels.length,
       menu = this.menu = this.menu || new Menu,
@@ -295,16 +297,22 @@ Autocomplete.prototype.respond = function(fn, query, res) {
   // Reset the menu
   this.menu.hide().clear().off('select');
 
-  for(var i = 0; i < len; i++) {
-    menu.add(values[i], format(labels[i], query));
-  }
+  labels.forEach(function(label, i) {
+    var value = values[i];
+    menu.add(value, format(label, query));
+    menu.on(value, function() {
+      autocomplete.el.value = label;
+    });
+  });
 
   // Pass select event onto autocomplete
   menu.on('select', this.select.bind(this));
 
   // Position the menu
   menu.moveTo(pos.x, pos.y);
-  menu.show();
+
+  // If we have items to show, show it.
+  if(items.length) menu.show();
 
   return this;
 };
