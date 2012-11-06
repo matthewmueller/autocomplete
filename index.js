@@ -31,7 +31,7 @@ function Autocomplete(el, url, opts) {
   this.coords = getOffset(el);
   this.url = url;
   this._display = true;
-  this.throttle = opts.throttle || 500;
+  this.throttle = opts.throttle || 200;
   this.throttledSearch = throttle(this.search.bind(this), this.throttle);
   this._key = el.getAttribute('name');
   this.formatter = function(item) { return item; };
@@ -177,7 +177,8 @@ Autocomplete.prototype.format = function(format) {
  */
 
 Autocomplete.prototype.search = function(fn) {
-  if(typeof fn !== 'function') fn = noop;
+  if(fn && fn.keyCode == 13) return this;
+  else if(typeof fn !== 'function') fn = noop;
 
   if(!this._key)
     throw new Error('autocomplete: no key to query on, add key in input[name] or key()');
@@ -286,7 +287,7 @@ Autocomplete.prototype.respond = function(fn, query, res) {
     throw new Error('autocomplete: dont know how to render menu need to specify #label(k) and #value(k)');
   }
 
-  var autocomplete = this,
+  var el = this.el,
       labels = map(items, this._label),
       values = map(items, this._value),
       len = labels.length,
@@ -301,7 +302,8 @@ Autocomplete.prototype.respond = function(fn, query, res) {
     var value = values[i];
     menu.add(value, format(label, query));
     menu.on(value, function() {
-      autocomplete.el.value = label;
+      el.value = label;
+      el.focus();
     });
   });
 
