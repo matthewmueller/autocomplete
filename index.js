@@ -177,7 +177,7 @@ Autocomplete.prototype.format = function(format) {
  */
 
 Autocomplete.prototype.search = function(fn) {
-  if(fn && fn.keyCode == 13) return this;
+  if(fn && (fn.keyCode == 13 || fn.keyCode == 27)) return this;
   else if(typeof fn !== 'function') fn = noop;
 
   if(!this._key)
