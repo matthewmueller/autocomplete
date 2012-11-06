@@ -77,7 +77,7 @@ Autocomplete.prototype.disable = function() {
 };
 
 /**
- * #menu(boolean)
+ * #display(boolean)
  *
  * Display the menu or not. Defaults to `true`
  *
@@ -87,6 +87,34 @@ Autocomplete.prototype.disable = function() {
 
 Autocomplete.prototype.display = function(display) {
   this._display = display;
+  return this;
+};
+
+/**
+ * Set the key for the search endpoint
+ *
+ * @param  {String} key
+ * @return {Autocomplete}
+ * @api public
+ */
+
+Autocomplete.prototype.key = function(key) {
+  this._key = key;
+  return this;
+};
+
+/**
+ * #parse(fn)
+ *
+ * Handles parsing the response
+ *
+ * @param {Function} fn
+ * @return {Autocomplete}
+ * @api public
+ */
+
+Autocomplete.prototype.parse = function(fn) {
+  this._parse = fn;
   return this;
 };
 
@@ -136,19 +164,6 @@ Autocomplete.prototype.format = function(format) {
 };
 
 /**
- * Set the key for the search endpoint
- *
- * @param  {String} key
- * @return {Autocomplete}
- * @api public
- */
-
-Autocomplete.prototype.key = function(key) {
-  this._key = key;
-  return this;
-};
-
-/**
  * #search([fn])
  *
  * Search with the given input. An optional callback
@@ -188,21 +203,6 @@ Autocomplete.prototype.search = function(fn) {
     .query(query)
     .end(this.respond.bind(this, fn, this.el.value));
 
-  return this;
-};
-
-/**
- * #parse(fn)
- *
- * Handles parsing the response
- *
- * @param {Function} fn
- * @return {Autocomplete}
- * @api public
- */
-
-Autocomplete.prototype.parse = function(fn) {
-  this._parse = fn;
   return this;
 };
 

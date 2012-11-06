@@ -40,7 +40,6 @@
       .label('data.title')
       .value('data.url')
       .parse('data.children')
-      // .itemize('data.title', 'data.url')
       .format(function(label, q) {
         var r = new RegExp('(?:' + q + ')', 'i');
         return label.replace(r, '<span class="highlight">$&</span>');
