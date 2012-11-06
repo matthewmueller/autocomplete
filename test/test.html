@@ -37,8 +37,8 @@
         img = document.getElementById('img');
 
     autocomplete(input, '/search/:keyword')
-      .label('data.title')
-      .value('data.url')
+      .labels('data.title')
+      .values('data.url')
       .parse('data.children')
       .format(function(label, q) {
         var r = new RegExp('(?:' + q + ')', 'i');

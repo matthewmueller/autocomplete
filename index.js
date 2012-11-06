@@ -128,7 +128,8 @@ Autocomplete.prototype.parse = function(fn) {
  * @api public
  */
 
-Autocomplete.prototype.label = function(label) {
+Autocomplete.prototype.label =
+Autocomplete.prototype.labels = function(label) {
   this._label = label;
   return this;
 };
@@ -143,7 +144,8 @@ Autocomplete.prototype.label = function(label) {
  * @api public
  */
 
-Autocomplete.prototype.value = function(value) {
+Autocomplete.prototype.value =
+Autocomplete.prototype.values = function(value) {
   this._value = value;
   return this;
 };
