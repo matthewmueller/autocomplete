@@ -280,13 +280,15 @@ Autocomplete.prototype.respond = function(fn, query, res) {
   this.emit('response', items);
   fn(null, items);
 
+  if(!this._display) return this;
+  else if(!this._label || !this._value) {
+    throw new Error('autocomplete: dont know how to render menu need to specify #label(k) and #value(k)');
+  }
+
   var labels = map(items, this._label),
       values = map(items, this._value),
-      len = labels.length;
-
-  if(!this._display) return this;
-
-  var menu = this.menu = this.menu || new Menu,
+      len = labels.length,
+      menu = this.menu = this.menu || new Menu,
       format = this.formatter,
       pos = this._position(this.el);
 
