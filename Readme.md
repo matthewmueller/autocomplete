@@ -3,7 +3,7 @@
 
   Autocomplete component
 
-![autocomplete](http://cl.ly/image/0Q0A3z3F0v0X)
+![autocomplete](http://f.cl.ly/items/1X2L2Y3P3t2d1p411W3Y/autocomplete.png)
 
 ## Installation
 
