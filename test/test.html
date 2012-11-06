@@ -1,0 +1,57 @@
+<html>
+<head>
+  <title>autocomplete component</title>
+  <link rel="stylesheet" href="/build/build.css">
+  <style type="text/css">
+    input {
+      width: 50%;
+      height: 30px;
+      line-height: 15px;
+      border: 1px solid gray;
+    }
+
+    img {
+      width: 50%;
+    }
+
+    .menu {
+      opacity: .75;
+      border: 1px solid gray;
+    }
+
+    .menu .highlight {
+      font-weight: bold;
+      color: #4987c7;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>autocomplete component</h1>
+  <input id="search" name="keyword"><br/>
+  <img id="img">
+  <script src="/build/build.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var autocomplete = require('autocomplete'),
+        input = document.getElementById('search'),
+        img = document.getElementById('img');
+
+    autocomplete(input, '/search/:keyword')
+      .label('data.title')
+      .value('data.url')
+      .parse('data.children')
+      // .itemize('data.title', 'data.url')
+      .format(function(label, q) {
+        var r = new RegExp('(?:' + q + ')', 'i');
+        return label.replace(r, '<span class="highlight">$&</span>');
+      })
+      .on('response', function(res) {
+        console.log(res);
+      })
+      .on('select', function(url) {
+        img.src = url;
+      })
+
+  </script>
+</body>
+</html>

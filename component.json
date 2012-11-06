@@ -1,0 +1,22 @@
+{
+  "name": "autocomplete",
+  "repo": "matthewmueller/autocomplete",
+  "description": "Autocomplete component",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "matthewmueller/throttle" : "*",
+    "component/event" : "*",
+    "component/emitter" : "*",
+    "visionmedia/superagent" : "*",
+    "matthewmueller/menu" : "*",
+    "component/map" : "*",
+    "component/to-function" : "*",
+    "component/classes" : "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}
