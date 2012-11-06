@@ -1,9 +1,11 @@
 {
   "name": "autocomplete",
   "repo": "matthewmueller/autocomplete",
+  "author": "Matt Mueller <mattmuelle@gmail.com>",
+  "twitter": "@mattmueller",
   "description": "Autocomplete component",
-  "version": "0.0.1",
-  "keywords": [],
+  "version": "0.0.2",
+  "keywords": ["autocomplete", "component", "ui"],
   "dependencies": {
     "matthewmueller/throttle" : "*",
     "component/event" : "*",
