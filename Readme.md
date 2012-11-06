@@ -17,9 +17,9 @@
 
 ```js
 autocomplete(document.getElementById('search'), '/search/:keyword')
-  .label('data.title')
-  .value('data.url')
-  .parse('data.children')
+  .parse('result')
+  .label('title')
+  .value('url')
   .format(function(label, q) {
     var r = new RegExp('(?:' + q + ')', 'i');
     return label.replace(r, '<span class="highlight">$&</span>');
