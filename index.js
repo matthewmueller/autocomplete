@@ -239,17 +239,16 @@ Autocomplete.prototype.position = function(fn) {
  * to provide custom positioning logic
  *
  * @param {Node} el
- * @return {Autocomplete}
+ * @return {Object}
  * @api private
  */
 
 Autocomplete.prototype._position = function(el) {
   var coords = getOffset(el),
-      left = coords.left,
-      top = coords.top + el.offsetHeight;
+      x = coords.left,
+      y = coords.top + el.offsetHeight;
 
-  this.menu.moveTo(left, top);
-  return this;
+  return { x : x, y : y };
 };
 
 /**
@@ -286,7 +285,8 @@ Autocomplete.prototype.respond = function(fn, query, res) {
   if(!this._display) return this;
 
   var menu = this.menu = this.menu || new Menu,
-      format = this.formatter;
+      format = this.formatter,
+      pos = this._position(this.el);
 
   // Reset the menu
   this.menu.hide().clear().off('select');
@@ -299,7 +299,7 @@ Autocomplete.prototype.respond = function(fn, query, res) {
   menu.on('select', this.select.bind(this));
 
   // Position the menu
-  this._position(this.el);
+  menu.moveTo(pos.x, pos.y);
   menu.show();
 
   return this;

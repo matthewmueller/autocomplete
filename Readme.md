@@ -53,7 +53,7 @@ Available options include:
 autocomplete(el, "https://api.github.com/legacy/repos/search/:keyword")
 ```
 
-### enable()
+### #enable()
 
 Enables the autocomplete.
 
@@ -61,7 +61,7 @@ Enables the autocomplete.
 autocomplete.enable()
 ```
 
-### disable()
+### #disable()
 
 Disables the autocomplete.
 
@@ -69,7 +69,7 @@ Disables the autocomplete.
 autocomplete.disable()
 ```
 
-### key(key)
+### #key(key)
 
 The query key used as either part of the query string or express-style parameter. May also be set by adding a `name` attribute to the input `el`.
 
@@ -77,7 +77,7 @@ The query key used as either part of the query string or express-style parameter
 autocomplete.key('q') // http://google.com/?q=...
 ```
 
-### display(display)
+### #display(display)
 
 Displays the menu. `display` defaults to `true`. You may set this `false` if you just want to use the search feature without the autocomplete menu.
 
@@ -85,7 +85,7 @@ Displays the menu. `display` defaults to `true`. You may set this `false` if you
 autocomplete.display(false)
 ```
 
-### parse(key)
+### #parse(key)
 
 Parses the result object called immediately after a successful response from the server. This is useful for preparing the data. Many times you don't recieve a direct result set, but instead an object containing the results, maybe something like `{ result : [...] }`. `key` may be a string or a function and supports [to-function](https://github.com/component/to-function) notation.
 
@@ -101,7 +101,7 @@ autocomplete.parse(function(res) {
 })
 ```
 
-### label(key)
+### #label(key)
 
 Determines which key from the result object should be used to map label names in the menu. `key` may be a string or a function. label uses [to-function](https://github.com/component/to-function), so you may use dot notation to traverse the result object.
 
@@ -117,7 +117,7 @@ autocomplete.label(function(item) {
 })
 ```
 
-### value(key)
+### #value(key)
 
 Determines which key from the result object should be used to map to values in the menu. This data is what will be passed when the user selects an item on the menu. `key` may be a string or a function and supports [to-function](https://github.com/component/to-function) notation.
 
@@ -133,7 +133,7 @@ autocomplete.value(function(item) {
 })
 ```
 
-### format(formatter)
+### #format(formatter)
 
 Format the menu items. Pass a `formatter(label, query)` function in to modify menu items. Useful for styling the result, such as providing query highlighting.
 
@@ -146,7 +146,7 @@ autocomplete.format(function(label, query) {
 })
 ```
 
-### search(fn)
+### #search(fn)
 
 Call `search` to manually execute a search. This is usually called by default as you type, but may be useful for one-off searches or if you disabled autocomplete. Optionally you may pass an `fn` function to handle the results or listen for the `response` event. Please note that `res` is run through `autocomplete#parse` beforehand.
 
@@ -157,25 +157,24 @@ autocomplete.search(function(err, res) {
 })
 ```
 
-### menu
+### #menu
 
 Access to the raw [menu](https://github.com/component/menu) component. Useful for listening to specific `menu` events.
 
-### position(fn)
+### #position(fn)
 
-Used to manually modify the position of the menu. May be useful for providing additional menu styling like carets and stuff.
+Used to manually modify the position of the menu. May be useful for providing additional menu styling like carets and stuff. `fn` must return a position object with `x` and `y` keys.
 
 Here's the default `fn`
 
 ```js
 autocomplete.position(function(el) {
   var coords = getOffset(el),
-      left = coords.left,
-      top = coords.top + el.offsetHeight;
+      x = coords.left,
+      y = coords.top + el.offsetHeight;
 
-  this.menu.moveTo(left, top);
-  return this;
-});
+  return { x : x, y : y };
+})
 ```
 
 ## Test
