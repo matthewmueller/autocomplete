@@ -1,5 +1,4 @@
 var express = require('express'),
-    request = require('superagent'),
     join = require('path').join,
     json = require('./data.json'),
     app = express(),

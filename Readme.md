@@ -180,7 +180,6 @@ autocomplete.position(function(el) {
 ## Test
 
     $ make test
-    $ node test/server.js
     $ open http://localhost:7000
 
 ## License

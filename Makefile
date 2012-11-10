@@ -6,7 +6,9 @@ components: component.json
 	@component install --dev
 
 test:
-	@npm install express superagent
+	@npm install express
+	node test/server.js
+
 
 clean:
 	rm -fr build components template.js
