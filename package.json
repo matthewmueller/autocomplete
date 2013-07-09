@@ -1,0 +1,29 @@
+{
+  "name": "autocomplete",
+  "version": "0.0.2",
+  "description": "Autocomplete component",
+  "main": "test/server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatthewMueller/autocomplete.git"
+  },
+  "keywords": [
+    "autocomplete",
+    "component",
+    "ui"
+  ],
+  "author": "Matt Mueller <mattmuelle@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MatthewMueller/autocomplete/issues"
+  },
+  "dependencies": {
+    "express": "~3.3.4"
+  }
+}
