@@ -6,9 +6,8 @@ components: component.json
 	@component install --dev
 
 test:
-	@npm install express
+	@npm install
 	node test/server.js
-
 
 clean:
 	rm -fr build components template.js
