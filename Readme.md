@@ -47,7 +47,9 @@ Initialize a new `Autocomplete` instance. Pass in an `input` el, a `url` endpoin
 
 Available options include:
 
-* `throttle` : *Defaults to 500*. Throttles the user input to reduce the number of AJAX calls.
+* `throttle` : *Defaults to 200*. Throttles the user input to reduce the number of AJAX calls.
+
+* `accept` : *Defaults to \*/\**. Specifies the value `Accept` request header for AJAX calls.
 
 ```js
 autocomplete(el, "https://api.github.com/legacy/repos/search/:keyword")
