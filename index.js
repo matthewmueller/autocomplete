@@ -32,6 +32,7 @@ function Autocomplete(el, url, opts) {
   this.url = url;
   this._display = true;
   this.throttle = opts.throttle || 200;
+  this.header = opts.header || {};
   this.throttledSearch = throttle(this.search.bind(this), this.throttle);
   this._key = el.getAttribute('name');
   this.formatter = function(item) { return item; };
@@ -204,6 +205,7 @@ Autocomplete.prototype.search = function(fn) {
   request
     .get(url)
     .query(query)
+    .set(this.header)
     .end(this.respond.bind(this, fn, this.el.value));
 
   return this;
