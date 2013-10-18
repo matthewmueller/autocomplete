@@ -4,7 +4,7 @@
   "author": "Matt Mueller <mattmuelle@gmail.com>",
   "twitter": "@mattmueller",
   "description": "Autocomplete component",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "keywords": ["autocomplete", "component", "ui"],
   "dependencies": {
     "matthewmueller/throttle" : "*",
