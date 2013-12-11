@@ -36,7 +36,7 @@
         input = document.getElementById('search'),
         img = document.getElementById('img');
 
-    autocomplete(input, '/search/:keyword', {accept: 'application/json'})
+    autocomplete(input, '/search/:keyword', {headers: { Accept: 'application/json', 'Content-Type': 'application/json'}})
       .labels('data.title')
       .values('data.url')
       .parse('data.children')
