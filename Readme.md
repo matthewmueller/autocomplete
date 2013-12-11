@@ -1,4 +1,3 @@
-
 # autocomplete
 
   Autocomplete component
@@ -49,7 +48,7 @@ Available options include:
 
 * `throttle` : *Defaults to 200*. Throttles the user input to reduce the number of AJAX calls.
 
-* `headers` : *Defaults to [superagent](https://github.com/visionmedia/superagent)'s default headers. Allows setting custom request headers for AJAX calls.
+* `headers` : *Defaults to [superagent](https://github.com/visionmedia/superagent)'s default headers*. Allows setting custom request headers for AJAX calls.
 
 ```js
 autocomplete(el, "https://api.github.com/legacy/repos/search/:keyword")
