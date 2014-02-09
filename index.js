@@ -32,6 +32,7 @@ function Autocomplete(el, url, opts) {
   this.url = url;
   this._display = true;
   this.throttle = opts.throttle || 200;
+  this.headers = opts.headers || {};
   this.throttledSearch = throttle(this.search.bind(this), this.throttle);
   this._key = el.getAttribute('name');
   this.formatter = function(item) { return item; };
@@ -185,6 +186,7 @@ Autocomplete.prototype.search = function(fn) {
 
   var self = this,
       url = this.url,
+      headers = this.headers,
       val = encodeURIComponent(this.el.value),
       rkey = new RegExp(':' + this._key);
       query = {};
@@ -203,6 +205,7 @@ Autocomplete.prototype.search = function(fn) {
 
   request
     .get(url)
+    .set(headers)
     .query(query)
     .end(this.respond.bind(this, fn, this.el.value));
 

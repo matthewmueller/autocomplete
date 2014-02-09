@@ -1,4 +1,3 @@
-
 # autocomplete
 
   Autocomplete component
@@ -47,7 +46,9 @@ Initialize a new `Autocomplete` instance. Pass in an `input` el, a `url` endpoin
 
 Available options include:
 
-* `throttle` : *Defaults to 500*. Throttles the user input to reduce the number of AJAX calls.
+* `throttle` : *Defaults to 200*. Throttles the user input to reduce the number of AJAX calls.
+
+* `headers` : *Defaults to [superagent](https://github.com/visionmedia/superagent)'s default headers*. Allows setting custom request headers for AJAX calls.
 
 ```js
 autocomplete(el, "https://api.github.com/legacy/repos/search/:keyword")
