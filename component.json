@@ -4,17 +4,21 @@
   "author": "Matt Mueller <mattmuelle@gmail.com>",
   "twitter": "@mattmueller",
   "description": "Autocomplete component",
-  "version": "0.0.2",
-  "keywords": ["autocomplete", "component", "ui"],
+  "version": "0.1.0",
+  "keywords": [
+    "autocomplete",
+    "component",
+    "ui"
+  ],
   "dependencies": {
-    "matthewmueller/throttle" : "*",
-    "component/event" : "*",
-    "component/emitter" : "*",
-    "visionmedia/superagent" : "*",
-    "matthewmueller/menu" : "*",
-    "component/map" : "*",
-    "component/to-function" : "*",
-    "component/classes" : "*"
+    "matthewmueller/throttle": "*",
+    "component/event": "*",
+    "component/emitter": "*",
+    "visionmedia/superagent": "*",
+    "matthewmueller/menu": "*",
+    "component/map": "*",
+    "component/to-function": "*",
+    "component/classes": "*"
   },
   "development": {},
   "license": "MIT",
