@@ -14,7 +14,7 @@
     "matthewmueller/throttle": "*",
     "component/event": "*",
     "component/emitter": "*",
-    "visionmedia/superagent": "*",
+    "tj/superagent": "*",
     "matthewmueller/menu": "*",
     "component/map": "*",
     "component/to-function": "*",
