@@ -19,6 +19,7 @@ autocomplete(document.getElementById('search'), '/search/:keyword')
   .parse('result')
   .label('title')
   .value('url')
+  .when(function(v) { return v.length > 2 })
   .format(function(label, q) {
     var r = new RegExp('(?:' + q + ')', 'i');
     return label.replace(r, '<span class="highlight">$&</span>');
