@@ -24,6 +24,7 @@
     "url": "https://github.com/MatthewMueller/autocomplete/issues"
   },
   "dependencies": {
-    "express": "~3.3.4"
+    "express": "~3.3.4",
+    "duo": "0.x"
   }
 }

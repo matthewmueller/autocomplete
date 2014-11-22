@@ -1,15 +1,15 @@
 
-build: components index.js
-	@component build --dev
-
-components: component.json
-	@component install --dev
-
-test:
-	@npm install
+example: build
 	node test/server.js
 
-clean:
-	rm -fr build components template.js
+build: node_modules
+	@./node_modules/.bin/duo -g autocomplete index.{css,js} build
 
-.PHONY: test clean
+node_modules: package.json
+	@npm install
+	touch node_modules
+
+clean:
+	rm -fr build components node_modules template.js
+
+.PHONY: test clean build

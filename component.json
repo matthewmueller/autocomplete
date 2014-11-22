@@ -11,14 +11,14 @@
     "ui"
   ],
   "dependencies": {
-    "matthewmueller/throttle": "*",
-    "component/event": "*",
-    "component/emitter": "*",
-    "visionmedia/superagent": "*",
-    "matthewmueller/menu": "*",
-    "component/map": "*",
-    "component/to-function": "*",
-    "component/classes": "*"
+    "component/throttle": "0.0.x",
+    "component/event": "0.1.x",
+    "component/emitter": "1.1.x",
+    "visionmedia/superagent": "0.21.x",
+    "component/menu": "1.0.x",
+    "component/map": "0.0.x",
+    "component/to-function": "2.0.x",
+    "component/classes": "1.2.x"
   },
   "development": {},
   "license": "MIT",

@@ -30,6 +30,7 @@ function Autocomplete(el, url, opts) {
   this.el = el;
   this.coords = getOffset(el);
   this.url = url;
+  this._when = false;
   this._display = true;
   this.throttle = opts.throttle || 200;
   this.headers = opts.headers || {};
@@ -167,6 +168,25 @@ Autocomplete.prototype.format = function(format) {
 };
 
 /**
+ * #when(regex|fn)
+ *
+ * Only autocomplete when the input meets
+ * the passes the `filter`
+ *
+ * @param {Regexp|Function} filter
+ * @return {Autocomplete}
+ * @api public
+ */
+
+Autocomplete.prototype.when = function(filter) {
+  this._when = 'function' != typeof filter
+    ? function (v) { return filter.test(v); }
+    : filter;
+
+  return this;
+};
+
+/**
  * #search([fn])
  *
  * Search with the given input. An optional callback
@@ -180,6 +200,9 @@ Autocomplete.prototype.format = function(format) {
 Autocomplete.prototype.search = function(fn) {
   if(fn && (fn.keyCode == 13 || fn.keyCode == 27)) return this;
   else if(typeof fn !== 'function') fn = noop;
+
+  // filter out invalid results
+  if (this._when && !this._when(this.el.value)) return this;
 
   if(!this._key)
     throw new Error('autocomplete: no key to query on, add key in input[name] or key()');
@@ -299,7 +322,7 @@ Autocomplete.prototype.respond = function(fn, query, res) {
       pos = this._position(this.el);
 
   // Add `autocomplete` class to menu
-  menu.el.addClass('autocomplete');
+  classes(menu.el).add('autocomplete');
 
   // Reset the menu
   this.menu.hide().clear().off('select');

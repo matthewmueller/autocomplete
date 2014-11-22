@@ -78,6 +78,15 @@ The query key used as either part of the query string or express-style parameter
 autocomplete.key('q') // http://google.com/?q=...
 ```
 
+### #when(regexp|function)
+
+Filter out queries that do not pass the `regexp` or `function`. You can use this to specify various formats for the queries or provide a minimum number of characters.
+
+```js
+// only search when we have an input length of more than 2
+autocomplete.when(function (v) { return v.length > 2 })
+```
+
 ### #display(display)
 
 Displays the menu. `display` defaults to `true`. You may set this `false` if you just want to use the search feature without the autocomplete menu.

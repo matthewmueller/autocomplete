@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>autocomplete component</title>
-  <link rel="stylesheet" href="/build/build.css">
+  <link rel="stylesheet" href="/build/index.css">
   <style type="text/css">
     input {
       width: 50%;
@@ -30,16 +30,16 @@
   <h1>autocomplete component</h1>
   <input id="search" name="keyword"><br/>
   <img id="img">
-  <script src="/build/build.js" type="text/javascript"></script>
+  <script src="build/index.js" type="text/javascript"></script>
   <script type="text/javascript">
-    var autocomplete = require('autocomplete'),
-        input = document.getElementById('search'),
+    var input = document.getElementById('search'),
         img = document.getElementById('img');
 
     autocomplete(input, '/search/:keyword', {headers: { Accept: 'application/json', 'Content-Type': 'application/json'}})
       .labels('data.title')
       .values('data.url')
       .parse('data.children')
+      .when(function(v) { return v.length > 3 })
       .format(function(label, q) {
         var r = new RegExp('(?:' + q + ')', 'i');
         return label.replace(r, '<span class="highlight">$&</span>');
